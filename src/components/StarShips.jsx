@@ -14,7 +14,7 @@ function StarShips() {
           if (Array.isArray(allStarships)) {
             // Shuffle the array randomly
             const randomStarships = shuffleArray(allStarships);
-            
+
             // Slice the array to contain only the first 10 starships
             setState({ starships: randomStarships.slice(0, 10), isLoading: false });
           }
@@ -25,7 +25,7 @@ function StarShips() {
     }
 
     fetchStarships();
-  }, []); // Empty dependency array means this effect will only run once after the initial render
+  }, []);
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -35,16 +35,33 @@ function StarShips() {
     return array;
   }
 
+  // Function to toggle the flip state of a starship
+  function toggleFlip(index) {
+    const updatedStarships = [...state.starships];
+    updatedStarships[index].isFlipped = !updatedStarships[index].isFlipped;
+    setState({ starships: updatedStarships, isLoading: state.isLoading });
+  }
+
   return (
     <div>
       <h2>Starships</h2>
+      <p>Click on a ship to learn more</p>
       {state.isLoading ? (
         <p>Loading...</p>
       ) : (
         <ul>
-          {state.starships.map((starship) => (
-            <li key={starship.name}>
-              {starship.name}<br />
+          {state.starships.map((starship, index) => (
+            <li
+              key={starship.name}
+              onClick={() => toggleFlip(index)} // Toggle flip on click
+              className={starship.isFlipped ? 'flipped' : ''}>
+              {starship.name}
+              <div className="back">
+                <p>Crew: {starship.crew}</p>
+                <p>Cost in Credits: {starship.cost_in_credits}</p>
+                <p>Passengers: {starship.passengers}</p>
+                <p>Model: {starship.model}</p>
+              </div>
             </li>
           ))}
         </ul>
