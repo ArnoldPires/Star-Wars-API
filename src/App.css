@@ -1,0 +1,57 @@
+body {
+  font-family: system-ui;
+  padding: 0;
+}
+header {
+  background-color: #282c34;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+button {
+  background-color: #2f4f4f;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+button:hover {
+  background-color: #1e3b3b;
+}
+h2, p {
+  text-align: center;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+li {
+  background-color: #2f4f4f;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.5s;
+  height: 10rem;
+  width: 10rem;
+}
+li.flipped {
+  transform: rotateY(180deg);
+}
+li.flipped .back {
+  display: block;
+  text-align: left;
+  transform: rotateY(180deg);
+}
+.back {
+  display: none;
+  margin-top: 10px;
+  font-size: 14px;
+}
