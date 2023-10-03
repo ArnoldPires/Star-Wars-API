@@ -1,13 +1,17 @@
+import React from 'react';
 import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Header from './components/Header';
+import StarShips from './components/StarShips';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Star Wars API</h1>
-      </header>
-      <button className="generate-button">Generate StarShips</button>
-    </div>
+    <Router>
+      <div className="content">
+        <Header />
+        <StarShips />
+      </div>
+    </Router>
   );
 }
 
